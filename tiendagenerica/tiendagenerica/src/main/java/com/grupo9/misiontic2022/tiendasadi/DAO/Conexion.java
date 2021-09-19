@@ -16,7 +16,7 @@ public class Conexion {
 	//mintic
 	static String clavebd = "mintic";
 	//127.0.0.1 == localhost
-	static String url = "jdbc:mysql://192.168.0.47/" + nombre_base_datos;
+	static String url = "jdbc:mysql://127.0.0.1/" + nombre_base_datos;
 	
 	//objeto sin inicializar de la conexión
 	Connection connection = null;
