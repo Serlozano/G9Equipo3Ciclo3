@@ -11,8 +11,8 @@ public class ClienteVO implements Serializable{
 		private Integer cedula_cliente;
 		private String email_cliente;
 		private String nombre_cliente;
-		private String password;
-		private String cliente;
+		private String direccion_cliente;
+		private String telefono_cliente;
 		
 		
 		/**
@@ -56,26 +56,26 @@ public class ClienteVO implements Serializable{
 		/**
 		 * @return the password
 		 */
-		public String getPassword() {
-			return password;
+		public String getTelefono_cliente() {
+			return telefono_cliente;
 		}
 		/**
-		 * @param password the password to set
+		 * @param telefono the telefono to set
 		 */
-		public void setPassword(String password) {
-			this.password = password;
+		public void setTelefono_cliente(String telefono_cliente) {
+			this.telefono_cliente = telefono_cliente;
 		}
 		/**
-		 * @return the cliente
+		 * @return the telefono
 		 */
-		public String getCliente() {
-			return cliente;
+		public String getDireccion_cliente() {
+			return direccion_cliente;
 		}
 		/**
-		 * @param cliente the clienteto set
+		 * @param direccion the direccion  to set
 		 */
-		public void setCliente(String cliente) {
-			this.cliente = cliente;
+		public void setDireccion_cliente(String direccion_cliente) {
+			this.direccion_cliente = direccion_cliente;
 		}
 		
 		

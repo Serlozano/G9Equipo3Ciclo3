@@ -27,8 +27,8 @@ public class ClienteDAO {
 					+ clien.getCedula_cliente() + "," + "'"
 					+ clien.getEmail_cliente() + "'," + "'" 
 					+ clien.getNombre_cliente() + "'," + "'" 
-					+ clien.getPassword()+ "'," + "'" 
-					+ clien.getCliente() + "'" 
+					+ clien.getDireccion_cliente()+ "'," + "'" 
+					+ clien.getTelefono_cliente() + "'" 
 					+ ");";
 			
 			//se ejecuta la sentencia en la base de datos
@@ -80,9 +80,8 @@ public class ClienteDAO {
 				Cliente.setCedula_cliente(Integer.parseInt(res.getString("cedula_cliente")));
 				Cliente.setEmail_cliente(res.getString("email_cliente"));
 				Cliente.setNombre_cliente(res.getString("nombre_cliente"));
-				Cliente.setPassword(res.getString("password"));
-				Cliente.setCliente(res.getString("cliente"));
-
+				Cliente.setTelefono_cliente(res.getString("telefono_cliente"));
+				Cliente.setDireccion_cliente(res.getString("direccion_cliente"));
 				listaclientes.add(Cliente);
 			}
 			//cerrar resultado, sentencia y conexión
@@ -131,8 +130,8 @@ public class ClienteDAO {
 				Cliente.setCedula_cliente(Integer.parseInt(res.getString("cedula_cliente")));
 				Cliente.setEmail_cliente(res.getString("email_cliente"));
 				Cliente.setNombre_cliente(res.getString("nombre_cliente"));
-				Cliente.setPassword(res.getString("password"));
-				Cliente.setCliente(res.getString("cliente"));
+				Cliente.setTelefono_cliente(res.getString("telefono_cliente"));
+				Cliente.setDireccion_cliente(res.getString("direccion_cliente"));
 
 				listaclientes.add(Cliente);
 			}
@@ -210,8 +209,8 @@ public class ClienteDAO {
 			String sentencia = "UPDATE clientes "
 					+ "SET email_cliente = '"+clien.getEmail_cliente()+"',"
 					+ "nombre_cliente = '"+clien.getNombre_cliente()+"',"
-					+ "password = '"+clien.getPassword()+"',"
-					+ "cliente = '"+clien.getCliente()+"' "
+					+ "telefono = '"+clien.getTelefono_cliente()+"' "
+					+ "direccion = '"+clien.getDireccion_cliente()+"',"
 					+ "WHERE cedula_cliente = "+clien.getCedula_cliente()+";";
 			
 			//ejecuta la sentencia 
