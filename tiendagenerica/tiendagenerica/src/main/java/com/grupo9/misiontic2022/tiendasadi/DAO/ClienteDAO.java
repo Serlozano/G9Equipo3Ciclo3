@@ -69,7 +69,7 @@ public class ClienteDAO {
 		try {
 			//prepare la sentencia en la base de datos
 			PreparedStatement consulta = conex.getConnection()
-					.prepareStatement("SELECT * FROM clientes where cliente = ? ");		
+					.prepareStatement("SELECT * FROM clientes where cedula_cliente = ? ");		
 			// se cambia el comodin ? por el dato que ha llegado en el parametro de la funcion
 			consulta.setString(1, cliente);			
 			//ejecute la sentencia
@@ -209,8 +209,8 @@ public class ClienteDAO {
 			String sentencia = "UPDATE clientes "
 					+ "SET email_cliente = '"+clien.getEmail_cliente()+"',"
 					+ "nombre_cliente = '"+clien.getNombre_cliente()+"',"
-					+ "telefono = '"+clien.getTelefono_cliente()+"' "
-					+ "direccion = '"+clien.getDireccion_cliente()+"',"
+					+ "telefono_cliente = '"+clien.getTelefono_cliente()+"',"
+					+ "direccion_cliente = '"+clien.getDireccion_cliente()+"' "
 					+ "WHERE cedula_cliente = "+clien.getCedula_cliente()+";";
 			
 			//ejecuta la sentencia 
