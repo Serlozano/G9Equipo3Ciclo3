@@ -37,7 +37,7 @@
 	<nav class="navbar navbar-dark bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand links" href="index.html"><i
-				class="fas fa-fish"></i>Tienda Los Tiburones</a>
+				class="fas fa-fish"></i>Tiendas ADI</a>
 		</div>
 	</nav>
 
@@ -131,17 +131,20 @@
 						onclick="window.location.href='/insertarusuario.jsp'">
 						<i class="fas fa-plus-circle"></i> Agregar usuario
 					</button>
-					<button type="button" class="btn btn-danger">
+					<button type="button" class="btn btn-danger"
+						onclick="window.location.href='/eliminarusuario.jsp'">
 						<i class="fas fa-trash"></i> Eliminar usuario
 					</button>
-					<button type="button" class="btn btn-warning">
+					<button type="button" class="btn btn-warning"
+						onclick="window.location.href='/actualizarusuario.jsp'">
 						<i class="fas fa-pen-alt"></i> Actualizar usuario
 					</button>
-					<button type="button" class="btn btn-primary">
+					<button type="button" class="btn btn-primary"
+						onclick="window.location.href='/buscarusuario.jsp'">
 						<i class="fas fa-search"></i> Buscar un usuario
 					</button>
 					<button type="button" class="btn btn-primary"
-					onclick="window.location.href='/listausuarios.jsp'">
+						onclick="window.location.href='/listausuarios.jsp'">
 						<i class="fas fa-search"></i> Listar todos los usuarios
 					</button>
 				</div>
