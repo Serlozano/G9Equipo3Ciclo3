@@ -46,7 +46,7 @@
 		<div class="container">
 			<a class="navbar-brand links" href="listausuarios.jsp"> <i
 				class="fas fa-users"></i> Usuarios
-			</a> <a class="navbar-brand links" href="listausuarios.jsp"> <i
+			</a> <a class="navbar-brand links" href="listaclientes.jsp"> <i
 				class="fas fa-address-book"></i> Clientes
 			</a> <a class="navbar-brand links" href="listausuarios.jsp"> <i
 				class="fas fa-truck"></i> Proveedores
@@ -68,7 +68,7 @@
 
 
 			<div id="error" class="alert alert-danger visually-hidden"
-				role="alert">Error al actualizar el usuario, verifique que la cedula y usuario dados sean validos</div>
+				role="alert">Error al actualizar el usuario, verifique que la cedula sea valida</div>
 
 			<div id="correcto" class="alert alert-success visually-hidden"
 				role="alert">Usuario actualizado con exito</div>
@@ -169,13 +169,13 @@
 			for (i = 0; i < usuarios.length; i++) {
 				console.log(usuarios[i].usuario);
 				console.log(usuarios[i].cedula_usuario);
-				if (usuarios[i].usuario === x) {
+				if (usuarios[i].usuario == x) {
 					console.log(usuarios[i].usuario + " " + x);
 					coincidencia = true
 					break;
 				}
 
-				if (usuarios[i].cedula_usuario === y) {
+				if (usuarios[i].cedula_usuario == y) {
 					console.log(usuarios[i].cedula_usuario + " " + y);
 					coincidencia = true
 					break;
