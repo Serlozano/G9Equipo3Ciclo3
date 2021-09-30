@@ -17,7 +17,7 @@ public class ProveedorVO implements Serializable {
 			
 			/**
 			 * Metodo que permite ver el valor del nit
-			 * @return the cedula_cliente
+			 * @return the nit_proveedor
 			 */
 			public Integer getNit_proveedor() {
 				return nit_proveedor;

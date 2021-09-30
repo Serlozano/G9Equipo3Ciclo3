@@ -48,9 +48,9 @@
 				class="fas fa-users"></i> Usuarios
 			</a> <a class="navbar-brand links" href="listaclientes.jsp"> <i
 				class="fas fa-address-book"></i> Clientes
-			</a> <a class="navbar-brand links" href="listausuarios.jsp"> <i
+			</a> <a class="navbar-brand links" href="listaproveedores.jsp"> <i
 				class="fas fa-truck"></i> Proveedores
-			</a> <a class="navbar-brand links" href="listausuarios.jsp"> <i
+			</a> <a class="navbar-brand links" href="insertarproducto.jsp"> <i
 				class="fas fa-apple-alt"></i> Productos
 			</a> <a class="navbar-brand links" href="listausuarios.jsp"> <i
 				class="fas fa-money-check-alt"></i> Ventas
@@ -105,7 +105,7 @@
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="basic-addon5">Telefono</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte password aqui..."
+						placeholder="Inserte telefono aqui..."
 						aria-describedby="basic-addon5" required id="telefono_cliente">
 				</div>
 			</form>
@@ -170,8 +170,6 @@
 				console.log(clientes[i].cliente);
 				console.log(clientes[i].cedula_cliente);
 				
-				
-
 				if (clientes[i].cedula_cliente == y) {
 					console.log(clientes[i].cedula_cliente + " " + y);
 					coincidencia = true
