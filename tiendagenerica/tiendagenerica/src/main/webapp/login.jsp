@@ -95,16 +95,20 @@
 	<!-- Script que trae la informacion de la api y la compara con las entradas -->
 	<script>
 		function comparar() {
+			
+			var getUrl = window.location;
+			var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+			
 			//trayendo texto de input de username
 			var x = document.getElementById("inputuser").value;
 			//trayendo texto de input de password
 			var y = document.getElementById("inputpass").value;
 			//url de la api 
-			var baseurl = "http://localhost:8080/listarusuarios";
+			
 			//creando un objeto de manipulacion de solicitudes
 			var xmlhttp = new XMLHttpRequest();
 			//abriendo la api
-			xmlhttp.open("GET", baseurl, true);
+			xmlhttp.open("GET", baseUrl+'/listarusuarios', true);
 			//funcion interna que compara la información
 			xmlhttp.onreadystatechange = function() {
 				//si se obtiene un 200 (Conexion correcta)

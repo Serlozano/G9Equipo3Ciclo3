@@ -10,7 +10,7 @@
 <!-- Tamaño de la pantalla -->
 <meta name="viewport" content="width=device-width">
 <!-- titulo de la pestaña -->
-<title>Lista de Productos</title>
+<title>Lista de Ventas</title>
 <!-- bootstrap-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -30,35 +30,36 @@
 
 <script>
 	
-	function loadproductos() {
+	function loadventas() {
 		
 		var getUrl = window.location;
 		var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+
 		
 		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.open("GET", baseUrl+'/listarproductos', true);
+		xmlhttp.open("GET", baseUrl+'/listarventas', true);
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-				var productos = JSON.parse(xmlhttp.responseText);
-				var tbltop = "<table class='table table-dark table-striped'><tr><th>Codigo</th><th>Iva</th><th>Nit</th><th>Nombre</th><th>Precio compra</th><th>Precio venta</th></tr>";
+				var ventas = JSON.parse(xmlhttp.responseText);
+				var tbltop = "<table class='table table-dark table-striped'><tr><th>Codigo</th><th>Cedula Usuario</th><th>Cedula Cliente</th><th>Iva</th><th>Total Venta</th><th>Valor venta</th></tr>";
 				var main = "";
-				for (i = 0; i < productos.length; i++) {
-					main += "<tr><td>" + productos[i].codigo_producto
-							+ "</td><td>" + productos[i].iva_compra
-							+ "</td><td>" + productos[i].nit_proveedor
-							+ "</td><td>" + productos[i].nombre_producto
-							+ "</td><td>" + productos[i].precio_compra
-							+ "</td><td>" + productos[i].precio_venta + "</td></tr>";
+				for (i = 0; i < ventas.length; i++) {
+					main += "<tr><td>" + ventas[i].codigo_venta
+							+ "</td><td>" + ventas[i].cedula_cliente
+							+ "</td><td>" + ventas[i].cedula_usuario
+							+ "</td><td>" + ventas[i].ivaventa
+							+ "</td><td>" + ventas[i].total_venta
+							+ "</td><td>" + ventas[i].valor_venta + "</td></tr>";
 				}
 				var tblbottom = "</table>";
 				var tbl = tbltop + main + tblbottom;
-				document.getElementById("productosinfo").innerHTML = tbl;
+				document.getElementById("ventasinfo").innerHTML = tbl;
 			}
 		};
 		xmlhttp.send();
 	}
 	window.onload = function() {
-		loadproductos();
+		loadventas();
 	}
 </script>
 
@@ -97,11 +98,11 @@
 	
 	<div style="padding-left: 5px;">
 	
-		<h1><i class="fas fa-list-ol"></i> Tabla de productos</h1>
+		<h1><i class="fas fa-list-ol"></i> Tabla de ventas</h1>
 			<div class="container">
 				<div class="row">
 					<!--  Aqui es donde se autogenera la tabla basado en el script -->
-					<div class="col align-self-center" id="productosinfo">
+					<div class="col align-self-center" id="ventasinfo">
 					
 					</div>
 	
@@ -112,8 +113,24 @@
 			<div class="container">
 				<div class="row">
 					<button type="button" class="btn btn-success"
-						onclick="window.location.href='<%=request.getContextPath()%>/insertarproducto.jsp'">
-						<i class="fas fa-plus-circle"></i> Agregar producto
+						onclick="window.location.href='<%=request.getContextPath()%>/insertarventa.jsp'">
+						<i class="fas fa-plus-circle"></i> Agregar venta
+					</button>
+					<button type="button" class="btn btn-danger"
+						onclick="window.location.href='<%=request.getContextPath()%>/eliminarventa.jsp'">
+						<i class="fas fa-trash"></i> Eliminar venta
+					</button>
+					<button type="button" class="btn btn-warning"
+						onclick="window.location.href='<%=request.getContextPath()%>/actualizarventa.jsp'">
+						<i class="fas fa-pen-alt"></i> Actualizar venta
+					</button>
+					<button type="button" class="btn btn-primary"
+						onclick="window.location.href='<%=request.getContextPath()%>/buscarventa.jsp'">
+						<i class="fas fa-search"></i> Buscar una venta
+					</button>
+					<button type="button" class="btn btn-primary"
+						onclick="window.location.href='<%=request.getContextPath()%>/listaventas.jsp'">
+						<i class="fas fa-search"></i> Listar todos las ventas
 					</button>
 				</div>
 			</div>

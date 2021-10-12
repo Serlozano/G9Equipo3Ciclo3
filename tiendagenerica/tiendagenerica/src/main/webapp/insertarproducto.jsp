@@ -52,9 +52,9 @@
 				class="fas fa-truck"></i> Proveedores
 			</a> <a class="navbar-brand links" href="listaproductos.jsp"> <i
 				class="fas fa-apple-alt"></i> Productos
-			</a> <a class="navbar-brand links" href="listausuarios.jsp"> <i
+			</a> <a class="navbar-brand links" href="listauventas.jsp"> <i
 				class="fas fa-money-check-alt"></i> Ventas
-			</a> <a class="navbar-brand links" href="listausuarios.jsp"> <i
+			</a> <a class="navbar-brand links" href="listareportes.jsp"> <i
 				class="fas fa-clipboard-list"></i> Reportes
 			</a>
 		</div>
@@ -99,6 +99,10 @@
 	</nav>
 	<script>
 		function subirArchivo() {
+			
+			var getUrl = window.location;
+			var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+
 
 			try {
 
@@ -115,7 +119,7 @@
 
 					var xhr = new XMLHttpRequest();
 					xhr.open("DELETE",
-							"http://localhost:8080/eliminartodoproducto",true);
+							baseUrl+"/eliminartodoproducto",true);
 					xhr.send();
 
 					for (var i = 0; i < arrayLineas.length; i += 1) {
@@ -138,7 +142,7 @@
 						formData.append("precio_venta", arraydatos[5]);
 						var xhr = new XMLHttpRequest();
 						xhr.open("POST",
-								"http://localhost:8080/registrarproducto");
+								baseUrl+"/registrarproducto");
 
 						xhr.send(formData);
 					}

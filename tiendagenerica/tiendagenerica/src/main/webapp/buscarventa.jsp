@@ -10,7 +10,7 @@
 <!-- Tamaño de la pantalla -->
 <meta name="viewport" content="width=device-width">
 <!-- titulo de la pestaña -->
-<title>Buscar cliente</title>
+<title>Buscar venta</title>
 <!-- bootstrap-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -48,7 +48,7 @@
 				class="fas fa-users"></i> Usuarios
 			</a> <a class="navbar-brand links" href="listaclientes.jsp"> <i
 				class="fas fa-address-book"></i> Clientes
-			</a> <a class="navbar-brand links" href="listproveedores.jsp"> <i
+			</a> <a class="navbar-brand links" href="listaproveedores.jsp"> <i
 				class="fas fa-truck"></i> Proveedores
 			</a> <a class="navbar-brand links" href="listaproductos.jsp"> <i
 				class="fas fa-apple-alt"></i> Productos
@@ -62,61 +62,68 @@
 
 	<div style="padding-left: 5px">
 		<h1>
-			<i class="fas fa-search"></i> Buscando un cliente
+			<i class="fas fa-search"></i> Buscando una venta
 		</h1>
 		<div class="container">
 
 
 			<div id="error" class="alert alert-danger visually-hidden"
-				role="alert">Error al buscar el cliente, el cliente no existe</div>
+				role="alert">Error al buscar la venta, la venta no existe</div>
 
 			<div id="correcto" class="alert alert-success visually-hidden"
-				role="alert">Cliente encontrado con exito</div>
+				role="alert">Venta encontrada con exito</div>
 
 			<form id="form1">
 			
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon4">Cliente a buscar</span> <input
+					<span class="input-group-text" id="basic-addon4">Venta a buscar</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte cedula aqui..."
-						aria-describedby="basic-addon4" required id="cliensearch" >
+						placeholder="Inserte codigo de venta aqui..."
+						aria-describedby="basic-addon4" required id="ventsearch" >
 				</div>
 				<br>
 				<br>
 				<br>
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon1">Cedula</span> <input
+					<span class="input-group-text" id="basic-addon1">Codigo de venta</span> <input
 						type="text" class="form-control"
-						aria-describedby="basic-addon1" required id="cedula_cliente" disabled="disabled">
-				</div>
-
-				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon2">Email</span> <input
-						type="text" class="form-control"
-						aria-describedby="basic-addon2" required id="email_cliente" disabled="disabled">
+						aria-describedby="basic-addon1" required id="codigo_venta" disabled="disabled">
 				</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon3">Nombre completo</span>
+					<span class="input-group-text" id="basic-addon2">Cedula del cliente</span> <input
+						type="text" class="form-control"
+						aria-describedby="basic-addon2" required id="cedula_cliente" disabled="disabled">
+				</div>
+
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="basic-addon3">Cedula del Usuario</span>
 					<input type="text" class="form-control"
-						aria-describedby="basic-addon3" required id="nombre_cliente"  disabled="disabled">
+						aria-describedby="basic-addon3" required id="cedula_usuario"  disabled="disabled">
 				</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon4">Direccion</span> <input
+					<span class="input-group-text" id="basic-addon4">iva de la venta</span> <input
 						type="text" class="form-control"
-						aria-describedby="basic-addon4" required id="direccion_cliente"  disabled="disabled">
+						aria-describedby="basic-addon4" required id="ivaventa"  disabled="disabled">
 				</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon5">Telefono</span> <input
+					<span class="input-group-text" id="basic-addon5">Total de la venta</span> <input
 						type="text" class="form-control"
-						aria-describedby="basic-addon5" required id="telefono_cliente"  disabled="disabled">
+						aria-describedby="basic-addon5" required id="total_venta"  disabled="disabled">
 				</div>
+				
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="basic-addon5">Valor de la venta</span> <input
+						type="text" class="form-control"
+						aria-describedby="basic-addon5" required id="valor_venta"  disabled="disabled">
+				</div>
+				
 			</form>
 
 			<button type="button" class="btn btn-primary" onclick="enviar()">
-				<i class="fas fa-search"></i> Buscar cliente
+				<i class="fas fa-search"></i> Buscar venta
 			</button>
 			
 			<br>
@@ -131,24 +138,24 @@
 			<div class="container">
 				<div class="row">
 					<button type="button" class="btn btn-success"
-						onclick="window.location.href='<%=request.getContextPath()%>/insertarcliente.jsp'">
-						<i class="fas fa-plus-circle"></i> Agregar cliente
+						onclick="window.location.href='<%=request.getContextPath()%>/insertarventa.jsp'">
+						<i class="fas fa-plus-circle"></i> Agregar venta
 					</button>
 					<button type="button" class="btn btn-danger"
-						onclick="window.location.href='<%=request.getContextPath()%>/eliminarcliente.jsp'">
-						<i class="fas fa-trash"></i> Eliminar cliente
+						onclick="window.location.href='<%=request.getContextPath()%>/eliminarventa.jsp'">
+						<i class="fas fa-trash"></i> Eliminar venta
 					</button>
 					<button type="button" class="btn btn-warning"
-						onclick="window.location.href='<%=request.getContextPath()%>/actualizarcliente.jsp'">
-						<i class="fas fa-pen-alt"></i> Actualizar cliente
+						onclick="window.location.href='<%=request.getContextPath()%>/actualizarventa.jsp'">
+						<i class="fas fa-pen-alt"></i> Actualizar venta
 					</button>
 					<button type="button" class="btn btn-primary"
-						onclick="window.location.href='<%=request.getContextPath()%>/buscarcliente.jsp'">
-						<i class="fas fa-search"></i> Buscar un cliente
+						onclick="window.location.href='<%=request.getContextPath()%>/buscarventa.jsp'">
+						<i class="fas fa-search"></i> Buscar una venta
 					</button>
 					<button type="button" class="btn btn-primary"
-						onclick="window.location.href='<%=request.getContextPath()%>/listaclientes.jsp'">
-						<i class="fas fa-search"></i> Listar todos los clientes
+						onclick="window.location.href='<%=request.getContextPath()%>/listaventas.jsp'">
+						<i class="fas fa-search"></i> Listar todos las ventas
 					</button>
 				</div>
 			</div>
@@ -169,15 +176,16 @@
 
 				var getUrl = window.location;
 				var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+
 			
 				var req = new XMLHttpRequest();
 				var coincidencia = false;
-				var clien=   document.getElementById("cliensearch").value;
-				req.open('GET', baseUrl+'/consultarcliente?cliente='+clien, false);
+				var vent=   document.getElementById("ventsearch").value;
+				req.open('GET', baseUrl+'/consultarventa?code='+vent, false);
 				req.send(null);
-				var cliente = null;
+				var venta = null;
 				if (req.status == 200)
-					cliente = JSON.parse(req.responseText);
+					venta = JSON.parse(req.responseText);
 				console.log(JSON.parse(req.responseText));
 				
 			
@@ -187,17 +195,18 @@
 				var element2 = document.getElementById("correcto");
 				element2.classList.remove("visually-hidden");
 				
-				console.log(cliente.toString());
+				console.log(venta.toString());
 				
-			if (cliente.toString()!=""){
+			if (venta.toString()!=""){
 
-				document.getElementById("cedula_cliente").value = cliente[0].cedula_cliente;
-				document.getElementById("email_cliente").value = cliente[0].cedula_cliente;
-				document.getElementById("nombre_cliente").value = cliente[0].cedula_cliente;
-				document.getElementById("direccion_cliente").value = cliente[0].direccion_cliente;
-				document.getElementById("telefono_cliente").value = cliente[0].telefono_cliente;
+				document.getElementById("codigo_venta").value = venta[0].codigo_venta;
+				document.getElementById("cedula_cliente").value = venta[0].cedula_cliente;
+				document.getElementById("cedula_usuario").value = venta[0].cedula_usuario;
+				document.getElementById("ivaventa").value = venta[0].ivaventa;
+				document.getElementById("total_venta").value = venta[0].total_venta;
+				document.getElementById("valor_venta").value = venta[0].valor_venta;
 				
-				document.getElementById("cliensearch").value = "";
+				document.getElementById("ventsearch").value = "";
 			
 
 			} else {
@@ -205,11 +214,12 @@
 				element.classList.remove("visually-hidden");
 				var element2 = document.getElementById("correcto");
 				element2.classList.add("visually-hidden");
+				document.getElementById("codigo_venta").value = "";
 				document.getElementById("cedula_cliente").value = "";
-				document.getElementById("email_cliente").value = "";
-				document.getElementById("nombre_cliente").value = "";
-				document.getElementById("direccion_cliente").value = "";
-				document.getElementById("telefono_cliente").value = "";
+				document.getElementById("cedula_usuario").value = "";
+				document.getElementById("ivaventa").value = "";
+				document.getElementById("total_venta").value = "";
+				document.getElementById("valor_venta").value = "";
 			}
 		}
 	</script>

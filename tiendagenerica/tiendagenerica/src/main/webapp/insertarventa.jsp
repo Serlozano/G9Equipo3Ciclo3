@@ -10,7 +10,7 @@
 <!-- Tamaño de la pantalla -->
 <meta name="viewport" content="width=device-width">
 <!-- titulo de la pestaña -->
-<title>Insertando usuario</title>
+<title>Insertando venta</title>
 <!-- bootstrap-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -62,51 +62,58 @@
 
 	<div style="padding-left: 5px">
 		<h1>
-			<i class="fas fa-plus-circle"></i> Datos del nuevo usuario
+			<i class="fas fa-plus-circle"></i> Datos de la nueva venta
 		</h1>
 		<div class="container">
 		
 		
 			<div id="error" class="alert alert-danger visually-hidden"
-					role="alert">Error al crear el usuario, verifique que no exista un usuario con la cedula y usuario dados</div>
+					role="alert">Error al crear la venta, verifique que no exista una venta con los datos dados</div>
 					
 			<div id="correcto" class="alert alert-success visually-hidden"
-				role="alert">Usuario creado con exito</div>
+				role="alert">Venta creada con exito</div>
 
 			<form id="form1">
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon1">Cedula</span> <input
+					<span class="input-group-text" id="basic-addon1">Codigo</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte cedula aqui..."
-						aria-describedby="basic-addon1" required id="cedula_usuario">
+						placeholder="Inserte codigo de venta aqui..."
+						aria-describedby="basic-addon1" required id="codigo_venta">
 				</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon2">Email</span> <input
+					<span class="input-group-text" id="basic-addon2">Cedula cliente</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte email aqui..."
-						aria-describedby="basic-addon2" required id="email_usuario">
+						placeholder="Inserte cedula del cliente aqui..."
+						aria-describedby="basic-addon2" required id="cedula_cliente">
 				</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon3">Nombre completo</span>
+					<span class="input-group-text" id="basic-addon3">Cedula Usuario</span>
 					<input type="text" class="form-control"
-						placeholder="Inserte nonbre aqui..."
-						aria-describedby="basic-addon3" required id="nombre_usuario">
+						placeholder="Inserte cedula del usuario aqui..."
+						aria-describedby="basic-addon3" required id="cedula_usuario">
 				</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon4">Username</span> <input
+					<span class="input-group-text" id="basic-addon4">Iva</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte username aqui..."
-						aria-describedby="basic-addon4" required id="user">
+						placeholder="Inserte iva aqui..."
+						aria-describedby="basic-addon4" required id="ivaventa">
 				</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon5">Password</span> <input
+					<span class="input-group-text" id="basic-addon5">Total de la venta</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte password aqui..."
-						aria-describedby="basic-addon5" required id="password">
+						placeholder="Inserte total de la venta aqui..."
+						aria-describedby="basic-addon5" required id="total_venta">
+				</div>
+				
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="basic-addon5">Valor de la venta</span> <input
+						type="text" class="form-control"
+						placeholder="Inserte valor de la venta aqui..."
+						aria-describedby="basic-addon5" required id="valor_venta">
 				</div>
 
 
@@ -116,7 +123,7 @@
 			</form>
 
 			<button type="button" class="btn btn-success" onclick="enviar()">
-				<i class="fas fa-check"></i> Insertar nuevo usuario
+				<i class="fas fa-check"></i> Insertar nueva venta
 			</button>
 
 
@@ -128,24 +135,24 @@
 			<div class="container">
 				<div class="row">
 					<button type="button" class="btn btn-success"
-						onclick="window.location.href='<%=request.getContextPath()%>/insertarusuario.jsp'">
-						<i class="fas fa-plus-circle"></i> Agregar usuario
+						onclick="window.location.href='<%=request.getContextPath()%>/insertarventa.jsp'">
+						<i class="fas fa-plus-circle"></i> Agregar venta
 					</button>
 					<button type="button" class="btn btn-danger"
-						onclick="window.location.href='<%=request.getContextPath()%>/eliminarusuario.jsp'">
-						<i class="fas fa-trash"></i> Eliminar usuario
+						onclick="window.location.href='<%=request.getContextPath()%>/eliminarventa.jsp'">
+						<i class="fas fa-trash"></i> Eliminar venta
 					</button>
 					<button type="button" class="btn btn-warning"
-						onclick="window.location.href='<%=request.getContextPath()%>/actualizarusuario.jsp'">
-						<i class="fas fa-pen-alt"></i> Actualizar usuario
+						onclick="window.location.href='<%=request.getContextPath()%>/actualizarventa.jsp'">
+						<i class="fas fa-pen-alt"></i> Actualizar venta
 					</button>
 					<button type="button" class="btn btn-primary"
-						onclick="window.location.href='<%=request.getContextPath()%>/buscarusuario.jsp'">
-						<i class="fas fa-search"></i> Buscar un usuario
+						onclick="window.location.href='<%=request.getContextPath()%>/buscarventa.jsp'">
+						<i class="fas fa-search"></i> Buscar una venta
 					</button>
 					<button type="button" class="btn btn-primary"
-						onclick="window.location.href='<%=request.getContextPath()%>/listausuarios.jsp'">
-						<i class="fas fa-search"></i> Listar todos los usuarios
+						onclick="window.location.href='<%=request.getContextPath()%>/listaventas.jsp'">
+						<i class="fas fa-search"></i> Listar todos las ventas
 					</button>
 				</div>
 
@@ -163,59 +170,57 @@
 		</div>
 	</nav>
 	<script>
-		function enviar() {
-			
-			var getUrl = window.location;
-			var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
-			
-			var x = document.getElementById("user").value;
-			var y = document.getElementById("cedula_usuario").value;
-			var req = new XMLHttpRequest();
-			var coincidencia = false;
-			req.open('GET', baseUrl+'/listarusuarios', false);
-			req.send(null);
-			var usuarios=null;
-			if (req.status == 200)
-				usuarios=JSON.parse(req.responseText);
-			  	console.log(JSON.parse(req.responseText));
-			  	
-			for (i = 0; i < usuarios.length; i++) {
-				console.log(usuarios[i].usuario);
-				console.log(usuarios[i].cedula_usuario);
-				if (usuarios[i].usuario ===x ) {
-					console.log(usuarios[i].usuario +" "+x);	
-					coincidencia =true
-					break;
-				}
+	function enviar() {
+		
+		var getUrl = window.location;
+		var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+
+		
+		var y = document.getElementById("codigo_venta").value;
+		var req = new XMLHttpRequest();
+		var coincidencia = false;
+		req.open('GET', baseUrl+'/listarventas', false);
+		req.send(null);
+		var ventas=null;
+		
+				if (req.status == 200){
+					proveedores=JSON.parse(req.responseText);
+				  	console.log(JSON.parse(req.responseText));}
+				  	
+				for (i = 0; i < ventas.length; i++) {
+					
+					
 				
-				if (usuarios[i].cedula_usuario ===y ) {
-					console.log(usuarios[i].cedula_usuario +" "+y);	
-					coincidencia =true
-					break;
+					if (ventas[i].codigo_venta ==y ) {
+						console.log(ventas[i].codigo_venta +" "+y);	
+						coincidencia =true
+						break;
+					}
 				}
-			}
 			console.log(coincidencia);	
 			
 			if (coincidencia==false){
 				var formData = new FormData();
+	 			formData.append("codigo_venta", document.getElementById("codigo_venta").value);
+	 			formData.append("cedula_cliente", document.getElementById("cedula_cliente").value);
 	 			formData.append("cedula_usuario", document.getElementById("cedula_usuario").value);
-	 			formData.append("email_usuario", document.getElementById("email_usuario").value);
-	 			formData.append("nombre_usuario", document.getElementById("nombre_usuario").value);
-	 			formData.append("password",document.getElementById("password").value);
-	 			formData.append("usuario",document.getElementById("user").value);
+	 			formData.append("ivaventa", document.getElementById("ivaventa").value);
+	 			formData.append("total_venta",document.getElementById("total_venta").value);
+	 			formData.append("valor_venta",document.getElementById("valor_venta").value);
 	 			var xhr = new XMLHttpRequest();
-	 			xhr.open("POST", "http://localhost:8080/registrarusuario");
+	 			xhr.open("POST", "http://localhost:8080/registrarventa");
 	 			
 				var element = document.getElementById("error");
 				element.classList.add("visually-hidden");
 				var element2 = document.getElementById("correcto");
 				element2.classList.remove("visually-hidden");
 				
+				document.getElementById("codigo_venta").value = "";
+				document.getElementById("cedula_cliente").value = "";
 				document.getElementById("cedula_usuario").value = "";
-				document.getElementById("email_usuario").value = "";
-				document.getElementById("nombre_usuario").value = "";
-				document.getElementById("password").value = "";
-				document.getElementById("user").value = "";
+				document.getElementById("ivaventa").value = "";
+				document.getElementById("total_venta").value = "";
+				document.getElementById("valor_venta").value = "";
 	 			xhr.send(formData);
 
 			}else{
@@ -223,11 +228,12 @@
 				element.classList.remove("visually-hidden");
 				var element2 = document.getElementById("correcto");
 				element2.classList.add("visually-hidden");
+				document.getElementById("codigo_venta").value = "";
+				document.getElementById("cedula_cliente").value = "";
 				document.getElementById("cedula_usuario").value = "";
-				document.getElementById("email_usuario").value = "";
-				document.getElementById("nombre_usuario").value = "";
-				document.getElementById("password").value = "";
-				document.getElementById("user").value = "";
+				document.getElementById("ivaventa").value = "";
+				document.getElementById("total_venta").value = "";
+				document.getElementById("valor_venta").value = "";
 			}	
 		}
 	</script>

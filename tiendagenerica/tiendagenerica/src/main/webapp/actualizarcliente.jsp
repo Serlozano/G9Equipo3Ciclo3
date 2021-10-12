@@ -52,9 +52,9 @@
 				class="fas fa-truck"></i> Proveedores
 			</a> <a class="navbar-brand links" href="listaproductos.jsp"> <i
 				class="fas fa-apple-alt"></i> Productos
-			</a> <a class="navbar-brand links" href="listausuarios.jsp"> <i
+			</a> <a class="navbar-brand links" href="listventas.jsp"> <i
 				class="fas fa-money-check-alt"></i> Ventas
-			</a> <a class="navbar-brand links" href="listausuarios.jsp"> <i
+			</a> <a class="navbar-brand links" href="listareportes.jsp"> <i
 				class="fas fa-clipboard-list"></i> Reportes
 			</a>
 		</div>
@@ -120,23 +120,23 @@
 			<div class="container">
 				<div class="row">
 					<button type="button" class="btn btn-success"
-						onclick="window.location.href='/insertarcliente.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/insertarcliente.jsp'">
 						<i class="fas fa-plus-circle"></i> Agregar cliente
 					</button>
 					<button type="button" class="btn btn-danger"
-						onclick="window.location.href='/eliminarcliente.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/eliminarcliente.jsp'">
 						<i class="fas fa-trash"></i> Eliminar cliente
 					</button>
 					<button type="button" class="btn btn-warning"
-						onclick="window.location.href='/actualizarcliente.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/actualizarcliente.jsp'">
 						<i class="fas fa-pen-alt"></i> Actualizar cliente
 					</button>
 					<button type="button" class="btn btn-primary"
-						onclick="window.location.href='/buscarcliente.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/buscarcliente.jsp'">
 						<i class="fas fa-search"></i> Buscar un cliente
 					</button>
 					<button type="button" class="btn btn-primary"
-						onclick="window.location.href='/listaclientes.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/listaclientes.jsp'">
 						<i class="fas fa-search"></i> Listar todos los clientes
 					</button>
 				</div>
@@ -156,10 +156,13 @@
 	<script>
 		function actualizar() {
 			
+			var getUrl = window.location;
+			var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+			
 			var y = document.getElementById("cedula_cliente").value;
 			var req = new XMLHttpRequest();
 			var coincidencia = false;
-			req.open('GET', 'http://localhost:8080/listarclientes', false);
+			req.open('GET', baseUrl+'/listarclientes', false);
 			req.send(null);
 			var clientes = null;
 			if (req.status == 200)

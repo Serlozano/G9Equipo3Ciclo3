@@ -10,7 +10,7 @@
 <!-- Tamaño de la pantalla -->
 <meta name="viewport" content="width=device-width">
 <!-- titulo de la pestaña -->
-<title>Eliminar proveedor</title>
+<title>Eliminar venta</title>
 <!-- bootstrap-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -62,31 +62,31 @@
 
 	<div style="padding-left: 5px">
 		<h1>
-			<i class="fas fa-skull-crossbones"></i> Datos del proveedor a eliminar
+			<i class="fas fa-skull-crossbones"></i> Datos de la venta a eliminar
 		</h1>
 		<div class="container">
 
 
 			<div id="error" class="alert alert-danger visually-hidden"
-				role="alert">Error al eliminar el proveedor, verifique que 
-				exista un proveedor con el nit digitado</div>
+				role="alert">Error al eliminar la vebta, verifique que 
+				exista el codigo de la venta digitado</div>
 
 			<div id="correcto" class="alert alert-success visually-hidden"
-				role="alert">Proveedor eliminado con exito</div>
+				role="alert">Venta eliminada con exito</div>
 
 			<form id="form1">
 			
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon1">Nit</span> <input
+					<span class="input-group-text" id="basic-addon1">codigo de venta</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte nit aqui..."
-						aria-describedby="basic-addon1" required id="nit_proveedor">
+						placeholder="Inserte codigo de venta aqui..."
+						aria-describedby="basic-addon1" required id="codigo_venta">
 				</div>
 
 			</form>
 
 			<button type="button" class="btn btn-danger" onclick="eliminar()">
-				<i class="fas fa-skull-crossbones"></i> Eliminar proveedor
+				<i class="fas fa-skull-crossbones"></i> Eliminar venta
 			</button>
 			
 			<br>
@@ -98,24 +98,24 @@
 			<div class="container">
 				<div class="row">
 					<button type="button" class="btn btn-success"
-						onclick="window.location.href='<%=request.getContextPath()%>/insertarproveedor.jsp'">
-						<i class="fas fa-plus-circle"></i> Agregar proveedor
+						onclick="window.location.href='<%=request.getContextPath()%>/insertarventa.jsp'">
+						<i class="fas fa-plus-circle"></i> Agregar venta
 					</button>
 					<button type="button" class="btn btn-danger"
-						onclick="window.location.href='<%=request.getContextPath()%>/eliminarproveedor.jsp'">
-						<i class="fas fa-trash"></i> Eliminar proveedor
+						onclick="window.location.href='<%=request.getContextPath()%>/eliminarventa.jsp'">
+						<i class="fas fa-trash"></i> Eliminar venta
 					</button>
 					<button type="button" class="btn btn-warning"
-						onclick="window.location.href='<%=request.getContextPath()%>/actualizarproveedor.jsp'">
-						<i class="fas fa-pen-alt"></i> Actualizar proveedor
+						onclick="window.location.href='<%=request.getContextPath()%>/actualizarventa.jsp'">
+						<i class="fas fa-pen-alt"></i> Actualizar venta
 					</button>
 					<button type="button" class="btn btn-primary"
-						onclick="window.location.href='<%=request.getContextPath()%>/buscarproveedor.jsp'">
-						<i class="fas fa-search"></i> Buscar un proveedor
+						onclick="window.location.href='<%=request.getContextPath()%>/buscarventa.jsp'">
+						<i class="fas fa-search"></i> Buscar una venta
 					</button>
 					<button type="button" class="btn btn-primary"
-						onclick="window.location.href='<%=request.getContextPath()%>/listaproveedores.jsp'">
-						<i class="fas fa-search"></i> Listar todos los proveedores
+						onclick="window.location.href='<%=request.getContextPath()%>/listaventas.jsp'">
+						<i class="fas fa-search"></i> Listar todos las ventas
 					</button>
 				</div>
 			</div>
@@ -138,21 +138,21 @@
 			var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 
 			
-			var y = document.getElementById("nit_proveedor").value;
+			var y = document.getElementById("codigo_venta").value;
 			var req = new XMLHttpRequest();
 			var coincidencia = false;
-			req.open('GET', baseUrl+'/listarproveedores', false);
+			req.open('GET', baseUrl+'/listarventas', false);
 			req.send(null);
-			var proveedores = null;
+			var ventas = null;
 			if (req.status == 200)
-				proveedores = JSON.parse(req.responseText);
+				ventas = JSON.parse(req.responseText);
 			console.log(JSON.parse(req.responseText));
 
-			for (i = 0; i < proveedores.length; i++) {
+			for (i = 0; i < ventas.length; i++) {
 				
-				console.log(proveedores[i].nit_proveedor);
-				if (proveedores[i].nit_proveedor == y) {
-					console.log(proveedores[i].nit_proveedor + " " + y);
+				console.log(ventas[i].codigo_venta);
+				if (ventas[i].codigo_venta == y) {
+					console.log(ventas[i].codigo_venta + " " + y);
 					coincidencia = true
 					break;
 				}
@@ -160,10 +160,10 @@
 			console.log(coincidencia);
 
 			if (coincidencia != false) {
-				var nit=document.getElementById("nit_proveedor").value;
+				var codigo=document.getElementById("codigo_venta").value;
 				
 				var xhr = new XMLHttpRequest();
-				xhr.open("DELETE", "http://localhost:8080/eliminarproveedor?nit_proveedor="+nit);
+				xhr.open("DELETE", "http://localhost:8080/eliminarventa?code="+codigo);
 				
 				var element = document.getElementById("error");
 				element.classList.add("visually-hidden");
@@ -171,7 +171,7 @@
 				var element2 = document.getElementById("correcto");
 				element2.classList.remove("visually-hidden");
 
-				document.getElementById("nit_proveedor").value = "";
+				document.getElementById("codigo_venta").value = "";
 				xhr.send();
 
 			} else {
@@ -181,7 +181,7 @@
 				var element2 = document.getElementById("correcto");
 				element2.classList.add("visually-hidden");
 				
-				document.getElementById("nit_proveedor").value = "";;
+				document.getElementById("codigo_venta").value = "";;
 			}
 		}
 	</script>
