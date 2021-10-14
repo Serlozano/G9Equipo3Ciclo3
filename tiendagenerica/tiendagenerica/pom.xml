@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.grupo9</groupId>
 	<artifactId>tiendagenerica</artifactId>
-	<version>0.0.12</version>
+	<version>0.0.17</version>
 	<packaging>war</packaging>
 	<name>tiendagenerica</name>
 	<description>Proyecto donde se emprende un aplicativo web con spring boot</description>
