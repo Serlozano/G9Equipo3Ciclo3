@@ -10,7 +10,7 @@
 <!-- Tamaño de la pantalla -->
 <meta name="viewport" content="width=device-width">
 <!-- titulo de la pestaña -->
-<title>Lista de usuarios</title>
+<title>Lista de Detalle Ventas</title>
 <!-- bootstrap-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -28,7 +28,41 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 
 
+<script>
+	
+	function loaddetalleventas() {
+		
+		var getUrl = window.location;
+		var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 
+		
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.open("GET", baseUrl+'/listardetalleventas', true);
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+				var detalleventas = JSON.parse(xmlhttp.responseText);
+				var tbltop = "<table class='table table-dark table-striped'><tr><th>Codigo de la venta</th><th>Cantidad Producto</th><th>Codigo Producto</th><th>Codigo Venta</th><th>Valor Total</th><th>Valor Venta</th><th>Valor Iva</th></tr>";
+				var main = "";
+				for (i = 0; i < detalleventas.length; i++) {
+					main += "<tr><td>" + detalleventas[i].codigo_detalle_venta
+							+ "</td><td>" + detalleventas[i].cantidad_producto
+							+ "</td><td>" + detalleventas[i].codigo_producto
+							+ "</td><td>" + detalleventas[i].codigo_venta
+							+ "</td><td>" + detalleventas[i].valor_total
+							+ "</td><td>" + detalleventas[i].valor_venta
+							+ "</td><td>" + detalleventas[i].valoriva + "</td></tr>";
+				}
+				var tblbottom = "</table>";
+				var tbl = tbltop + main + tblbottom;
+				document.getElementById("detalleventasinfo").innerHTML = tbl;
+			}
+		};
+		xmlhttp.send();
+	}
+	window.onload = function() {
+		loaddetalleventas();
+	}
+</script>
 
 </head>
 
@@ -63,12 +97,23 @@
 	
 	<!-- contenido  -->
 	
+	<div style="padding-left: 5px;">
 	
+		<h1><i class="fas fa-list-ol"></i> Tabla de Detalle Ventas</h1>
+			<div class="container">
+				<div class="row">
+					<!--  Aqui es donde se autogenera la tabla basado en el script -->
+					<div class="col align-self-center" id="detalleventasinfo">
+					
+					</div>
+	
+				</div>
+			</div>
 	
 		<h1><i class="fas fa-cogs"></i> Operaciones</h1>
 			<div class="container">
 				<div class="row">
-					<button type="button" class="btn btn-primary"
+				<button type="button" class="btn btn-primary"
 						onclick="window.location.href='<%=request.getContextPath()%>/listadousuarios.jsp'">
 						<i class="fas fa-search"></i> Listado de usuarios
 					</button>
@@ -79,11 +124,11 @@
 					<button type="button" class="btn btn-primary"
 						onclick="window.location.href='<%=request.getContextPath()%>/listadetalleventas.jsp'">
 						<i class="fas fa-search"></i> Listado de detalle ventas
-					
+					</button>
 				</div>
 			</div>
 	</div>
-
+	<br><br>
 
 	<nav class="navbar fixed-bottom navbar-dark bg-dark">
 		<div class="row justify-content-between">

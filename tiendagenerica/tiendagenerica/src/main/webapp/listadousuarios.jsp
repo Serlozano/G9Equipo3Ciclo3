@@ -114,15 +114,15 @@
 				<div class="row">
 					<button type="button" class="btn btn-primary"
 						onclick="window.location.href='<%=request.getContextPath()%>/listadousuarios.jsp'">
-						<i class="fas fa-plus-circle"></i> Listado de usuarios
+						<i class="fas fa-search"></i> Listado de usuarios
 					</button>
 					<button type="button" class="btn btn-primary"
 						onclick="window.location.href='<%=request.getContextPath()%>/listadoclientes.jsp'">
-						<i class="fas fa-trash"></i> Listado de clientes 
+						<i class="fas fa-search"></i> Listado de clientes 
 					</button>
 					<button type="button" class="btn btn-primary"
-						onclick="window.location.href='<%=request.getContextPath()%>/ventasxcliente.jsp'">
-						<i class="fas fa-pen-alt"></i> Ventas por cliente
+						onclick="window.location.href='<%=request.getContextPath()%>/listadetalleventas.jsp'">
+						<i class="fas fa-search"></i> Ventas por cliente
 					</button>
 				</div>
 			</div>
