@@ -539,6 +539,10 @@
 		}
 		function registrar() {
 			try {
+				
+				var getUrl = window.location;
+				var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+				
 				formData = new FormData();
 				formData.append("codigo_venta", document.getElementById("consecutivo").value);
 				formData.append("cedula_cliente", document.getElementById("cedula_cliente").value);
@@ -552,6 +556,8 @@
 				setTimeout(
 					function() {
 						
+						var getUrl = window.location;
+						var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 						
 						for (i = 1; i < 4; i++) {
 							var actual = document.getElementById(("valtotal" + i.toString()).value);
@@ -597,6 +603,8 @@
 						element2.classList.remove("visually-hidden");
 					}, 1500);
 			} catch (error) {
+				
+				console.log(error);
 				var element = document.getElementById("error");
 				element.classList.remove("visually-hidden");
 				var element2 = document.getElementById("correcto");

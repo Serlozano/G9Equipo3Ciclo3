@@ -6,10 +6,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.grupo9.misiontic2022.tiendasadi.DAO.DetalleVentaDAO;
 import com.grupo9.misiontic2022.tiendasadi.DTO.DetalleVentaVO;
 
+@RestController
 public class DetalleVentaController {
 
 
