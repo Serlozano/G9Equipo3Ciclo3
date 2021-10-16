@@ -23,15 +23,15 @@ public class ClienteController {
 	 * */
 
 	@PostMapping("/registrarcliente")
-	public void registrarCliente(ClienteVO clien) {
+	public void registrarCliente(ClienteVO user) {
 		ClienteDAO Dao = new ClienteDAO();
-		Dao.registrarCliente(clien);
+		Dao.registrarCliente(user);
 	}
 
 	@GetMapping("/consultarcliente")
-	public ArrayList<ClienteVO> consultarClientes(String cliente) {
+	public ArrayList<ClienteVO> consultarClientes(Integer cedula) {
 		ClienteDAO Dao = new ClienteDAO();
-		return Dao.consultarCliente(cliente);
+		return Dao.consultarCliente(cedula);
 	}
 
 	@GetMapping("/listarclientes")
@@ -41,17 +41,15 @@ public class ClienteController {
 	}
 	
 	@DeleteMapping("/eliminarcliente")
-	public void eliminarCliente(Integer cedula_cliente) {
+	public void eliminarCliente(Integer cedula) {
 		ClienteDAO Dao = new ClienteDAO();
-		Dao.eliminarCliente(cedula_cliente);
+		Dao.eliminarCliente(cedula);
 	}
 	
-	@PutMapping("/actualizarclientes")
-	public void actualizarCliente(ClienteVO clien) {
+	@PutMapping("/actualizarcliente")
+	public void actualizarCliente(ClienteVO user) {
 		ClienteDAO Dao = new ClienteDAO();
-		Dao.actualizarCliente(clien);
+		Dao.actualizarCliente(user);
 	}
 	
-	
-
 }

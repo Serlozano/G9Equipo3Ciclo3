@@ -1,7 +1,6 @@
 package com.grupo9.misiontic2022.tiendasadi.BO;
 
 import java.util.ArrayList;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,8 +11,10 @@ import com.grupo9.misiontic2022.tiendasadi.DAO.VentaDAO;
 import com.grupo9.misiontic2022.tiendasadi.DTO.VentaVO;
 
 
+
 @RestController
 public class VentaController {
+	
 	/*
 	 * @GetMapping obtener o buscar
 	 * @PostMapping insertar o agregar
@@ -22,15 +23,9 @@ public class VentaController {
 	 * */
 
 	@PostMapping("/registrarventa")
-	public void registrarVenta(VentaVO vent) {
+	public void registrarVenta(VentaVO venta) {
 		VentaDAO Dao = new VentaDAO();
-		Dao.registrarVenta(vent);
-	}
-
-	@GetMapping("/consultarventa")
-	public ArrayList<VentaVO> consultarVenta(Integer code) {
-		VentaDAO Dao = new VentaDAO();
-		return Dao.consultarVenta(code);
+		Dao.registrarVenta(venta);
 	}
 
 	@GetMapping("/listarventas")
@@ -38,17 +33,26 @@ public class VentaController {
 		VentaDAO Dao = new VentaDAO();
 		return Dao.listaDeVentas();
 	}
-	
+
 	@DeleteMapping("/eliminarventa")
-	public void eliminarVenta(Integer code) {
+	public void eliminarVenta(Integer codigo_venta) {
 		VentaDAO Dao = new VentaDAO();
-		Dao.eliminarVenta(code);
-	}
-	
-	@PutMapping("/actualizarventa")
-	public void actualizarVenta(VentaVO vent) {
-		VentaDAO Dao = new VentaDAO();
-		Dao.actualizarVenta(vent);
+		Dao.eliminarVenta(codigo_venta);
 	}
 
+	@PutMapping("/actualizarventa")
+	public void actualizarVenta(VentaVO venta) {
+		VentaDAO Dao = new VentaDAO();
+		Dao.actualizarVenta(venta);
+	}
+	
+	
+	@GetMapping("/contadorventa")
+	public Integer contadorVentas() {
+		VentaDAO Dao = new VentaDAO();
+		return Dao.contadorVentas();
+	}
+	
+	
 }
+

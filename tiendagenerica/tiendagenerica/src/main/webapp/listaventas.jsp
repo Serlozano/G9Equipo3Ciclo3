@@ -116,18 +116,6 @@
 						onclick="window.location.href='<%=request.getContextPath()%>/insertarventa.jsp'">
 						<i class="fas fa-plus-circle"></i> Agregar venta
 					</button>
-					<button type="button" class="btn btn-danger"
-						onclick="window.location.href='<%=request.getContextPath()%>/eliminarventa.jsp'">
-						<i class="fas fa-trash"></i> Eliminar venta
-					</button>
-					<button type="button" class="btn btn-warning"
-						onclick="window.location.href='<%=request.getContextPath()%>/actualizarventa.jsp'">
-						<i class="fas fa-pen-alt"></i> Actualizar venta
-					</button>
-					<button type="button" class="btn btn-primary"
-						onclick="window.location.href='<%=request.getContextPath()%>/buscarventa.jsp'">
-						<i class="fas fa-search"></i> Buscar una venta
-					</button>
 					<button type="button" class="btn btn-primary"
 						onclick="window.location.href='<%=request.getContextPath()%>/listaventas.jsp'">
 						<i class="fas fa-search"></i> Listar todos las ventas

@@ -3,11 +3,12 @@ package com.grupo9.misiontic2022.tiendasadi.DAO;
 import java.sql.*;
 import java.util.ArrayList;
 
-import com.grupo9.misiontic2022.tiendasadi.DTO.VentaVO;
+import com.grupo9.misiontic2022.tiendasadi.DTO.DetalleVentaVO;
 
-public class VentaDAO {
 
-	public void registrarVenta(VentaVO venta) {
+public class DetalleVentaDAO {
+
+	public void registrarDetalleVenta(DetalleVentaVO detalleventa) {
 		// llama y crea una instancia de la clase encargada de hacer la conexión
 		Conexion conex = new Conexion();
 
@@ -16,9 +17,10 @@ public class VentaDAO {
 			Statement estatuto = conex.getConnection().createStatement();
 
 			// String que contiene la sentencia insert a ejecutar
-			String sentencia = "INSERT INTO ventas VALUES(" + venta.getCodigo_venta() + "," + venta.getCedula_cliente()
-					+ "," + venta.getCedula_usuario() + "," + venta.getIvaventa() + "," + venta.getTotal_venta() + ","
-					+ venta.getValor_venta() + "" + ");";
+			String sentencia = "INSERT INTO detalle_ventas VALUES(" + detalleventa.getCodigo_detalle_venta() + ","
+					+ detalleventa.getCantidad_producto() + "," + detalleventa.getCodigo_producto() + ","
+					+ detalleventa.getCodigo_venta() + "," + detalleventa.getValor_total() + ","
+					+ detalleventa.getValor_venta() + "," + detalleventa.getValoriva() + "" + ");";
 
 			// se ejecuta la sentencia en la base de datos
 			estatuto.executeUpdate(sentencia);
@@ -31,29 +33,29 @@ public class VentaDAO {
 		} catch (SQLException e) {
 			// si hay un error en el sql mostrarlo
 			System.out.println("------------------- ERROR --------------");
-			System.out.println("No se pudo insertar la venta");
+			System.out.println("No se pudo insertar la detalleventa");
 			System.out.println(e.getMessage());
 			System.out.println(e.getErrorCode());
 		} catch (Exception e) {
 			// si hay cualquier otro error mostrarlo
 			System.out.println("------------------- ERROR --------------");
-			System.out.println("No se pudo insertar la venta");
+			System.out.println("No se pudo insertar la detalleventa");
 			System.out.println(e.getMessage());
 			System.out.println(e.getLocalizedMessage());
 		}
 
 	}
 
-	public ArrayList<VentaVO> listaDeVentas() {
+	public ArrayList<DetalleVentaVO> listaDeDetalleVenta() {
 		// lista que contendra el o los usuarios obtenidos
-		ArrayList<VentaVO> listaventas = new ArrayList<VentaVO>();
+		ArrayList<DetalleVentaVO> listadetalle_ventas = new ArrayList<DetalleVentaVO>();
 
 		// instancia de la conexión
 		Conexion conex = new Conexion();
 
 		try {
 			// prepare la sentencia en la base de datos
-			PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM ventas");
+			PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM detalle_ventas");
 
 			// ejecute la sentencia
 			ResultSet res = consulta.executeQuery();
@@ -61,15 +63,16 @@ public class VentaDAO {
 			// cree un objeto para cada encontrado en la base de datos basado en la clase
 			// entidad con los datos encontrados
 			while (res.next()) {
-				VentaVO Venta = new VentaVO();
-				Venta.setCodigo_venta(Integer.parseInt(res.getString("codigo_venta")));
-				Venta.setCedula_cliente(Integer.parseInt(res.getString("cedula_cliente")));
-				Venta.setCedula_usuario(Integer.parseInt(res.getString("cedula_usuario")));
-				Venta.setIvaventa(Double.parseDouble(res.getString("ivaventa")));
-				Venta.setTotal_venta(Double.parseDouble(res.getString("total_venta")));
-				Venta.setValor_venta(Double.parseDouble(res.getString("valor_venta")));
+				DetalleVentaVO venta = new DetalleVentaVO();
+				venta.setCodigo_detalle_venta(Integer.parseInt(res.getString("codigo_detalle_venta")));
+				venta.setCantidad_producto(Integer.parseInt(res.getString("cantidad_producto")));
+				venta.setCodigo_producto(Integer.parseInt(res.getString("codigo_producto")));
+				venta.setCodigo_venta(Integer.parseInt(res.getString("codigo_venta")));
+				venta.setValor_total(Double.parseDouble(res.getString("valor_total")));
+				venta.setValor_venta(Double.parseDouble(res.getString("valor_venta")));
+				venta.setValoriva(Double.parseDouble(res.getString("valoriva")));
 
-				listaventas.add(Venta);
+				listadetalle_ventas.add(venta);
 			}
 
 			// cerrar resultado, sentencia y conexión
@@ -80,21 +83,22 @@ public class VentaDAO {
 		} catch (SQLException e) {
 			// si hay un error en el sql mostrarlo
 			System.out.println("------------------- ERROR --------------");
-			System.out.println("No se pudo consultar todas las ventas");
+			System.out.println("No se pudo consultar todas las detalle_ventas");
 			System.out.println(e.getMessage());
 			System.out.println(e.getErrorCode());
 		} catch (Exception e) {
 			// si hay cualquier otro error mostrarlo
 			System.out.println("------------------- ERROR --------------");
-			System.out.println("No se pudo consultar todas las ventas");
+			System.out.println("No se pudo consultar todas las detalle_ventas");
 			System.out.println(e.getMessage());
 			System.out.println(e.getLocalizedMessage());
+			e.printStackTrace();
 		}
 
-		return listaventas;
+		return listadetalle_ventas;
 	}
 
-	public void eliminarVenta(Integer codigo_venta) {
+	public void eliminarDetalleVenta(Integer codigo_detalleventa) {
 
 		// instancia de la conexion
 		Conexion conex = new Conexion();
@@ -104,7 +108,7 @@ public class VentaDAO {
 			Statement consulta = conex.getConnection().createStatement();
 
 			// preparando sentencia a realizar
-			String sentencia = "delete from ventas where codigo_venta=" + codigo_venta + ";";
+			String sentencia = "delete from detalle_ventas where codigo_detalle_venta=" + codigo_detalleventa + ";";
 
 			// impresion de verificación
 			System.out.println("Registrado " + sentencia);
@@ -119,20 +123,20 @@ public class VentaDAO {
 		} catch (SQLException e) {
 			// si hay un error en el sql mostrarlo
 			System.out.println("------------------- ERROR --------------");
-			System.out.println("No se pudo eliminar la venta");
+			System.out.println("No se pudo eliminar la detalleventa");
 			System.out.println(e.getMessage());
 			System.out.println(e.getErrorCode());
 		} catch (Exception e) {
 			// si hay cualquier otro error mostrarlo
 			System.out.println("------------------- ERROR --------------");
-			System.out.println("No se pudo eliminar la venta");
+			System.out.println("No se pudo eliminar la detalleventa");
 			System.out.println(e.getMessage());
 			System.out.println(e.getLocalizedMessage());
 		}
 
 	}
 
-	public void actualizarVenta(VentaVO venta) {
+	public void actualizarDetalleVenta(DetalleVentaVO detalleventa) {
 
 		// instancia de conexion
 		Conexion conex = new Conexion();
@@ -142,9 +146,12 @@ public class VentaDAO {
 			Statement estatuto = conex.getConnection().createStatement();
 
 			// String con la sentencia a ejecutar
-			String sentencia = "UPDATE ventas " + "SET ivaventa = " + venta.getIvaventa() + "," + "total_venta = "
-					+ venta.getTotal_venta() + "," + "valor_venta = " + venta.getValor_venta() + " "
-					+ "WHERE codigo_venta = " + venta.getCedula_usuario() + ";";
+			String sentencia = "UPDATE detalle_ventas " + 
+			"SET cantidad_producto = " + detalleventa.getCantidad_producto()+ ", " 
+			+ "valor_total = " + detalleventa.getValor_total() + ", "
+			+ "valor_venta = " + detalleventa.getValor_venta() + ", "
+			+ "valoriva = " + detalleventa.getValoriva()+ " "
+			+ "WHERE codigo_detalle_venta = " + detalleventa.getCodigo_detalle_venta()+ ";";
 
 			// ejecuta la sentencia
 			estatuto.executeUpdate(sentencia);
@@ -172,7 +179,7 @@ public class VentaDAO {
 
 	}
 
-	public int contadorVentas() {
+	public int contadorDetalleVenta() {
 		// lista que contendra el o los usuarios obtenidos
 		int contador = 0;
 
@@ -181,9 +188,7 @@ public class VentaDAO {
 
 		try {
 			// prepare la sentencia en la base de datos
-			PreparedStatement consulta = conex.getConnection()
-					.prepareStatement("SELECT `AUTO_INCREMENT` " + "FROM  INFORMATION_SCHEMA.TABLES "
-							+ "WHERE TABLE_SCHEMA = 'g9g3' " + "AND   TABLE_NAME   = 'ventas';");
+			PreparedStatement consulta = conex.getConnection().prepareStatement("select COUNT(*) FROM detalle_ventas;");
 
 			// ejecute la sentencia
 			ResultSet res = consulta.executeQuery();
@@ -191,7 +196,7 @@ public class VentaDAO {
 			// cree un objeto para cada encontrado en la base de datos basado en la clase
 			// entidad con los datos encontrados
 			while (res.next()) {
-				contador = (res.getInt("AUTO_INCREMENT"));
+				contador = (res.getInt("COUNT(*)")) + 1;
 			}
 
 			// cerrar resultado, sentencia y conexión
@@ -217,3 +222,4 @@ public class VentaDAO {
 	}
 
 }
+

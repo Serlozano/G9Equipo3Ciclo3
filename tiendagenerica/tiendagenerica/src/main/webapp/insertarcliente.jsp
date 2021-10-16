@@ -199,7 +199,7 @@
 	 			formData.append("direccion_cliente",document.getElementById("direccion_cliente").value);
 	 			formData.append("telefono_cliente",document.getElementById("telefono_cliente").value);
 	 			var xhr = new XMLHttpRequest();
-	 			xhr.open("POST", "http://localhost:8080/registrarcliente");
+	 			xhr.open("POST", baseUrl+"/registrarcliente");
 	 			
 				var element = document.getElementById("error");
 				element.classList.add("visually-hidden");
