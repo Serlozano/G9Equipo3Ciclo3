@@ -1,6 +1,5 @@
 package com.equipo6.misiontic2022.tiendasgenericas.ekotiendas.controller;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +27,7 @@ import com.equipo6.misiontic2022.tiendasgenericas.ekotiendas.repository.UsuarioR
 @RestController
 @RequestMapping("/api")
 public class UsuarioController {
+	
 	@Autowired
 	UsuarioRepository usuarioRepository;
 
@@ -67,7 +67,7 @@ public class UsuarioController {
 	  public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario user) {
 	    try {
 	      Usuario _usuario = usuarioRepository.save(new Usuario(user.getUsername(), 
-	    		  user.getPassword(), user.getNombreusuario(),user.getEmailusuario()));
+	    		  user.getPassword(), user.getNombrecompleto(),user.getEmailusuario()));
 	      return new ResponseEntity<>(_usuario, HttpStatus.CREATED);
 	    } catch (Exception e) {
 	      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

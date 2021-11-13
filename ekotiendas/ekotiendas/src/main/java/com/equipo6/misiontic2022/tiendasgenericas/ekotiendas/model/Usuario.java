@@ -11,7 +11,7 @@ public class Usuario {
 	
 	private String username;
 	private String password;
-	private String nombreusuario;
+	private String nombrecompleto;
 	private String emailusuario;
 	
 	public Usuario() {
@@ -22,11 +22,11 @@ public class Usuario {
 	
 
 
-	public Usuario(String username, String password, String nombreusuario, String emailusuario) {
+	public Usuario(String username, String password, String nombrecompleto, String emailusuario) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.nombreusuario = nombreusuario;
+		this.nombrecompleto = nombrecompleto;
 		this.emailusuario = emailusuario;
 	}
 
@@ -52,11 +52,11 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getNombreusuario() {
-		return nombreusuario;
+	public String getNombrecompleto() {
+		return nombrecompleto;
 	}
-	public void setNombreusuario(String nombreusuario) {
-		this.nombreusuario = nombreusuario;
+	public void setNombrecompleto(String nombrecompleto) {
+		this.nombrecompleto = nombrecompleto;
 	}
 	public String getEmailusuario() {
 		return emailusuario;
