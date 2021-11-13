@@ -9,11 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.equipo6.misiontic2022.tiendasgenericas</groupId>
-	<artifactId>ponchoprovisiones</artifactId>
+	<artifactId>ekotiendas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>ponchoprovisiones</name>
-	<description>Proyecto de entrenamiento en spring con mongodb</description>
+	<name>ekotiendas</name>
+	<description>Proyecto de prueba </description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

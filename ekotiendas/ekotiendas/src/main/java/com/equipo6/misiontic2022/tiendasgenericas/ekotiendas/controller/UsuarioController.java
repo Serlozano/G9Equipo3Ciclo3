@@ -1,5 +1,4 @@
-package com.equipo6.misiontic2022.tiendasgenericas.ponchoprovisiones.controller;
-
+package com.equipo6.misiontic2022.tiendasgenericas.ekotiendas.controller;
 
 
 import java.util.ArrayList;
@@ -20,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.equipo6.misiontic2022.tiendasgenericas.ponchoprovisiones.model.Usuario;
-import com.equipo6.misiontic2022.tiendasgenericas.ponchoprovisiones.repository.UsuarioRepository;
+import com.equipo6.misiontic2022.tiendasgenericas.ekotiendas.model.Usuario;
+import com.equipo6.misiontic2022.tiendasgenericas.ekotiendas.repository.UsuarioRepository;
 
 
 @CrossOrigin(origins = "*")
@@ -29,7 +28,6 @@ import com.equipo6.misiontic2022.tiendasgenericas.ponchoprovisiones.repository.U
 @RestController
 @RequestMapping("/api")
 public class UsuarioController {
-
 	@Autowired
 	UsuarioRepository usuarioRepository;
 

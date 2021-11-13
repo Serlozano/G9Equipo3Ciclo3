@@ -1,10 +1,10 @@
-package com.equipo6.misiontic2022.tiendasgenericas.ponchoprovisiones;
+package com.equipo6.misiontic2022.tiendasgenericas.ekotiendas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PonchoprovisionesApplicationTests {
+class EkotiendasApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,11 +1,11 @@
-package com.equipo6.misiontic2022.tiendasgenericas.ponchoprovisiones.model;
+package com.equipo6.misiontic2022.tiendasgenericas.ekotiendas.model;
+
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection= "usuarios")
 public class Usuario {
-	
 	@Id
 	private String id;
 	

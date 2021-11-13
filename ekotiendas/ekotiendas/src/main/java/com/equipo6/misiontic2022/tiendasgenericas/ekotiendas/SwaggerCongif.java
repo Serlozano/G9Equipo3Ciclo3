@@ -1,4 +1,4 @@
-package com.equipo6.misiontic2022.tiendasgenericas.ponchoprovisiones;
+package com.equipo6.misiontic2022.tiendasgenericas.ekotiendas;
 
 import java.util.Collections;
 import org.springframework.context.annotation.Bean;
@@ -11,21 +11,21 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+
 @Configuration
 @EnableSwagger2
-public class SwaggerConfig {
-
+public class SwaggerCongif {
 	@Bean
 	public Docket apiDocket() {
 		//RECORDAR CAMBIAR EL PAQUETE BASE AL PAQUETE BO DE CADA UNO
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.equipo6.misiontic2022.tiendasgenericas.ponchoprovisiones.controller"))
+				.apis(RequestHandlerSelectors.basePackage("com.equipo6.misiontic2022.tiendasgenericas.ekotiendas.controller"))
 				.paths(PathSelectors.any()).build()
 				.apiInfo(getApiInfo());
 	}
 
 	private ApiInfo getApiInfo() {
-		return new ApiInfo("Api test Spring-Angular-MongoDB", "Back-End Tiendas Poncho Provisiones", "1.0", "",
+		return new ApiInfo("Api test Spring-Angular-MongoDB", "Back-End eko tiendas ", "1.0", "",
 				new Contact("", "", ""), "", "",
 				Collections.emptyList());
 	}  
