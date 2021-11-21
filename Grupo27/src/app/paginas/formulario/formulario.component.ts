@@ -1,15 +1,15 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-formulario',
+  templateUrl: './formulario.component.html',
+  styleUrls: ['./formulario.component.css']
 })
-export class AppComponent implements OnInit {
-   
+export class FormularioComponent implements OnInit {
+
   res:any;
 
   contenido:any;
@@ -34,55 +34,20 @@ export class AppComponent implements OnInit {
   suma: number=0;
 
   constructor(private objetohttp:HttpClient){}
-  
+
+
   ngOnInit(): void {
-    this.suma=45+98
-
-    //utilizando el servicio en la url
-    this.res=this.objetohttp.get(this.urlapi).pipe(catchError(this.handleError));
-    this.res.subscribe((datos:any[])=>{
-      this.contenido=datos;
-      console.log(this.contenido);
-    });
-  
-  }
-  
-  //post
-  nombre!:string;
-  correo!:string;
-  
-
-
-  
-  title = 'Login';
-
-  listausuarios=["diego","sergio","admin","user"];
-  listapass=["diego","sergio","admin","user"];
-
-
-  user_correcto: string = "admininicial";
-  pass_correcto: string = "admin123456";
-
-  user: string = "";
-  pass: string = "";
-
-  correcto: number=-1;
-  comparar() {
-    if (this.user === this.user_correcto) {
-      this.correcto = 1;
-      if (this.pass === this.pass_correcto) {
-        this.correcto = 1;
-      } else {
-        this.correcto = 0;
-      }
-    } else {
-      this.correcto = 0;
-    }
-
   }
 
 
-  codigoRespuesta!:number;
+  
+//post
+nombre!:string;
+correo!:string;
+user!:string;
+pass!:string;
+
+codigoRespuesta!:number;
   postData(){
 
     this.objetohttp.post<any>(
@@ -97,12 +62,5 @@ export class AppComponent implements OnInit {
     ).subscribe(response=>{
       this.codigoRespuesta=response.status;
     });
-  }
-}
-  
-  
-  
-  
-  
-  
 
+  }}
